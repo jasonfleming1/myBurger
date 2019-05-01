@@ -1,0 +1,62 @@
+<!--INSTRUCTIONS FROM VIDEO WALKTHROUGH -->
+<!--localhost:8080/index is the route -->
+<!-- need a text box and a button to enter to eat -->
+<!-- render submittedBurger on left (id, burger_name) -->
+<!-- submittedBurger has a button that sets isDevoured to true -->
+<!-- if isDevoured == true, then render on right -->
+
+<!-- ============================== FORM ============================== -->
+
+<div class="container">
+
+    <!-- =============== ENTER BURGER =============== -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1>It's burger time</h1>
+            <br>
+            <h2>Enter a burger you want to eat</h2>
+            <br>
+            <form class="create-form">
+                <div class="form-group">
+                    <input type="text" id="burgerName" name="burgerName">
+                </div>
+                <div class="form-group">
+                    <label for="isDevoured">Have you eaten this yet?</label><br>
+                    <input type="radio" name="isDevoured" value="1" checked> Yes!<br>
+                    <input type="radio" name="isDevoured" value="0"> No
+                </div>
+                <button type="submit">Add Burger!</button>
+            </form>
+        </div> <!-- end column -->
+    </div> <!-- end row -->
+
+    <!-- =============== RENDER BURGERS =============== -->
+
+    <!-- uneaten burgers -->
+
+    <div class="row">
+        <div class="col-md-6">
+            <ul>
+                {{#each burger}}
+                    {{#unless devoured}}
+                        {{> burgers/burger devoured=false}}
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        </div> <!-- end column -->
+
+    <!-- eaten burgers -->
+
+        <div class="col-md-6">
+            <ul>
+                {{#each burger}}
+                    {{#if devoured}}
+                        {{> burgers/burger devoured=true}}
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        </div> <!-- end column -->
+    </div> <!-- end row -->    
+    
+</div> <!-- end container -->

@@ -1,2 +1,2 @@
-# myBurger
-new repo for failed heroku attempt
+# burger
+Node Express Handlebars
