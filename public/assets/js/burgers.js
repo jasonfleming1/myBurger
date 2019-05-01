@@ -34,11 +34,11 @@ $(function() {
         //get the vlaues to make a new burger
         var newBurger = {
             burger_name: $("#burgerName").val().trim(),
-            devoured: $("[naem=isDevoured]:checked").val().trim()
+            devoured: $("[name=isDevoured]:checked").val().trim()
         };
 
         //POST request
-        $.ajax("/api/burgers", {
+        $.ajax("/api/burger", {
            type: "POST",
             data: newBurger
         }).then (
