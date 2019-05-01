@@ -19,7 +19,7 @@ var burger = require("../models/burger.js");
 
 //GET route to select * burgers
 
-router.get("/", function(req, res){
+router.get("/", function(req, res) {
     burger.all(function(data) {
         var hbsObject = {
             burgers: data
@@ -31,22 +31,22 @@ router.get("/", function(req, res){
 
 //POST route for create burger
 
-router.post("/api/burgers", function(req, res){
+router.post("/api/burgers", function(req, res) {
     burger.create([
-        "burgerName", "isDevoured" //form inputs from index
+        "burger_name", "devoured" //here is the deal
     ], [
-        req.body.burgerName, req.body.isDevoured 
+        req.body.burger_name, req.body.devoured
     ], function(result) {
-        res.json({ id: result.insertId} );
+        res.json({ id: result.insertId });
     });
 }); // ==> end POST route
 
 //PUT route for create burger
 
-router.put("/api/burgers/:id", function (req, res) {
+router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
     
-    //console.log("condition", condition);
+    // console.log("condition", condition);
 
     burger.update({
         devoured: req.body.isDevoured 
@@ -58,6 +58,27 @@ router.put("/api/burgers/:id", function (req, res) {
         }
     });
 }); // ==> end PUT route
+
+//GET for changed
+
+router.get("/api/burgers/:id", function(req, res) {
+    console.log('get api_burgers_id');
+    var condition = "id = " + req.params.id;
+    
+    console.log("condition", condition);
+    
+    burger.read(
+      condition,
+      function(result) {
+        if (result.changedRows === 0) {
+          // If no rows were changed, then the ID must not exist, so 404
+          return res.status(404).end();
+        }
+        res.json({ id: result.insertId,
+                   burger_name: result.burger_name,
+                   devoured: result.devoured });
+      });
+  });
 
 //==============EXPORT==============
 

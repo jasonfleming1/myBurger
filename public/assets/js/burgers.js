@@ -6,7 +6,7 @@
 $(function() {
 
     //this function manages when a burger is eaten
-    $(".btnDevour").on("click", function(event) {
+    $(".change-devoured").on("click", function(event) {
         var id = $(this).data("id");
         var newDevoured = $(this).data('willEat');
 
@@ -15,7 +15,7 @@ $(function() {
         };
 
         //PUT request 
-        $.ajax("/api/burger/" + id, {
+        $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: isEaten
         }).then(
@@ -34,11 +34,11 @@ $(function() {
         //get the vlaues to make a new burger
         var newBurger = {
             burger_name: $("#burgerName").val().trim(),
-            devoured: $("[name=isDevoured]:checked").val().trim()
+            devoured: $("[name=isDevoured]:checked").val().trim() ? 0 : 1
         };
 
         //POST request
-        $.ajax("/api/burger", {
+        $.ajax("/api/burgers", {
            type: "POST",
             data: newBurger
         }).then (

@@ -26,20 +26,24 @@ var burger = {
 
     // createBurger
     create: function(cols, vals, cb) {
-        orm.create("burgers", cols, vals, function(res) {
-            cb(res);
-        });
-
+      orm.create("burgers", cols, vals, function(res) {
+        cb(res);
+      });
     }, // ==>end createBurger
 
     // updateBurger
     update: function(objColVals, condition, cb) {
-        orm.update("burgers", objColVals, condition, {
-            function(res) {
-                cb(res);
-            }
+        orm.update("burgers", objColVals, condition, function(res) {
+          cb(res);
         });
-    } // ==> end updateBurger
+      }, // ==> end updateBurger
+
+    // readBurger
+    read: function(condition, cb) {
+        orm.read("burgers", condition, function(res) {
+          cb(res);
+        });
+    } // ==> end readBurger
 }; // ==> end var burger
 
 //==============EXPORT==============
