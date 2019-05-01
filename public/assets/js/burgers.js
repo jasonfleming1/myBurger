@@ -20,7 +20,7 @@ $(function() {
             data: isEaten
         }).then(
             function() {
-                console.log("changed to ", isEaten);
+                console.log("changed to ", newDevoured);
                 location.reload(); //reload the page to get updated list
             }
         ) // ==> PUT end
@@ -34,7 +34,7 @@ $(function() {
         //get the vlaues to make a new burger
         var newBurger = {
             burger_name: $("#burgerName").val().trim(),
-            devoured: $("[name=isDevoured]:checked").val().trim() ? 0 : 1
+            devoured: $("[name=devoured]:checked").val().trim() ? 0 : 1
         };
 
         //POST request

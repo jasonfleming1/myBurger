@@ -22,9 +22,9 @@
                     <input type="text" id="burgerName" name="burgerName">
                 </div>
                 <div class="form-group">
-                    <label for="isDevoured">Have you eaten this yet?</label><br>
-                    <input type="radio" name="isDevoured" value="1" checked> Yes!<br>
-                    <input type="radio" name="isDevoured" value="0"> No
+                    <label for="devoured">Have you eaten this yet?</label><br>
+                    <input type="radio" name="devoured" value="1" checked> Yes!<br>
+                    <input type="radio" name="devoured" value="0"> No
                 </div>
                 <button type="submit">Add Burger!</button>
             </form>
@@ -41,7 +41,7 @@
             <ul>
                 {{#each burgers}}
                     {{#unless devoured}}
-                        {{> burgers/burgers devoured=true}}
+                        {{> burgers/burger-block devoured=true}}
                     {{/unless}}
                 {{/each}}
             </ul>
@@ -50,11 +50,11 @@
     <!-- eaten burgers -->
 
         <div class="col-md-6">
-            <h2>Burger History</h2>
+            <h2>Eaten Burger</h2>
             <ul>
                 {{#each burgers}}
                     {{#if devoured}}
-                        {{> burgers/burgers devoured=false}}
+                        {{> burgers/burger-block devoured=false}}
                     {{/if}}
                 {{/each}}
             </ul>

@@ -16,34 +16,33 @@ var orm = require("../config/orm.js");
 
 // create function to interact with the database
 var burger = {
-    
-    //getAll
-    all: function(cb) {
-        orm.all("burgers", function(res) {
-            cb(res);
-        });
-    }, // ==> end getAll
+  //getAll
+  all: function(cb) {
+    orm.all("burgers", function(res) {
+      cb(res);
+    });
+  }, // ==> end getAll
 
-    // createBurger
-    create: function(cols, vals, cb) {
-      orm.create("burgers", cols, vals, function(res) {
-        cb(res);
-      });
-    }, // ==>end createBurger
+  // createBurger
+  create: function(cols, vals, cb) {
+    orm.create("burgers", cols, vals, function(res) {
+      cb(res);
+    });
+  }, // ==>end createBurger
 
-    // updateBurger
-    update: function(objColVals, condition, cb) {
-        orm.update("burgers", objColVals, condition, function(res) {
-          cb(res);
-        });
-      }, // ==> end updateBurger
+  // updateBurger
+  update: function(objColVals, condition, cb) {
+    orm.update("burgers", objColVals, condition, function(res) {
+      cb(res);
+    });
+  }, // ==> end updateBurger
 
-    // readBurger
-    read: function(condition, cb) {
-        orm.read("burgers", condition, function(res) {
-          cb(res);
-        });
-    } // ==> end readBurger
+  // readBurger
+  read: function(condition, cb) {
+    orm.read("burgers", condition, function(res) {
+      cb(res);
+    });
+  } // ==> end readBurger
 }; // ==> end var burger
 
 //==============EXPORT==============

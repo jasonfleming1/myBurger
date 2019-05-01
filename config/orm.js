@@ -23,6 +23,7 @@ function printQuestionMarks(num) {
   for (var i = 0; i < num; i++) {
     arr.push("?");
   }
+
   return arr.toString();
 }
 
@@ -93,22 +94,6 @@ var orm = {
     queryString += condition;
 
     console.log(queryString);
-
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      cb(result);
-    });
-  }, //==> end updateOne()
-
-  //readOne()
-  read: function(table, condition, cb) {
-    var queryString = "SELECT * FROM" + table;
-    queryString += " WHERE ";
-    queryString += condition;
-
-    console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -116,7 +101,7 @@ var orm = {
 
       cb(result);
     });
-  } // ==> end readOne
+  },//==> end updateOne()
 
 }; // ==> end var orm
 
