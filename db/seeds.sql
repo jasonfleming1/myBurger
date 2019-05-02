@@ -13,6 +13,19 @@ Close out of the MySQL command line tool: exit.*/
 
 /* === POPULATE THE BURGER TABLE === */
 
+DROP TABLE IF EXISTS burgers;
+CREATE TABLE burgers (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    burger_name VARCHAR (280) NOT NULL,
+    devoured BOOLEAN NOT NULL,
+    createdAt TIMESTAMP NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO burgers (burger_name, devoured) VALUES ('Black Bean Burger', FALSE);
+INSERT INTO burgers (burger_name, devoured) VALUES ('Cheeseburger', FALSE);
+INSERT INTO burgers (burger_name, devoured) VALUES ('Stuffed Burger', FALSE);
+INSERT INTO burgers (burger_name, devoured) VALUES ('Bacon Cheeseburger', FALSE);
 INSERT INTO burgers (burger_name, devoured) VALUES ('Black Bean Burger', FALSE);
 INSERT INTO burgers (burger_name, devoured) VALUES ('Cheeseburger', FALSE);
 INSERT INTO burgers (burger_name, devoured) VALUES ('Stuffed Burger', FALSE);
