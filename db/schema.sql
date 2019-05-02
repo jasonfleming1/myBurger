@@ -17,7 +17,7 @@ USE burger_db;
 
 DROP TABLE IF EXISTS burgers;
 CREATE TABLE burgers (
-    id int NOT NULL AUTO_INCREMENT,
+    id INTEGER NOT NULL AUTO_INCREMENT,
     burger_name VARCHAR (280) NOT NULL,
     devoured BOOLEAN NOT NULL,
     PRIMARY KEY (id)
