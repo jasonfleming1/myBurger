@@ -1,9 +1,10 @@
 {
-  "name": "clear",
+  "name": "myburger",
   "version": "1.0.0",
   "description": "burger node app with sql deployed to heroku",
   "main": "server.js",
   "scripts": {
+    "start":"node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
