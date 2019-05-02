@@ -7,17 +7,21 @@ $(function() {
 
     //this function manages when a burger is eaten
     $(".change-devoured").on("click", function(event) {
+
+
         var id = $(this).data("id");
-        var newDevoured = $(this).data('willEat');
+        var newDevoured = $(this).data('willeat');
 
         var isEaten = {
             devoured: newDevoured
         };
 
+        console.log(isEaten)
+
         //PUT request 
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
-            data: isEaten
+            data:isEaten
         }).then(
             function() {
                 console.log("changed to ", newDevoured);
@@ -31,11 +35,14 @@ $(function() {
     $(".create-form").on("submit", function(event) {
         event.preventDefault();
         
+        console.log($("[name=devoured]:checked").val().trim())
         //get the vlaues to make a new burger
         var newBurger = {
             burger_name: $("#burgerName").val().trim(),
-            devoured: $("[name=devoured]:checked").val().trim() ? 0 : 1
+            devoured: $("[name=devoured]:checked").val().trim()==0 ? 0 : 1
         };
+
+        console.log(newBurger);
 
         //POST request
         $.ajax("/api/burgers", {
